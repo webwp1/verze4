@@ -25,10 +25,9 @@
             --glass: rgba(255, 255, 255, 0.8);
             --border-glass: rgba(15, 23, 42, 0.08);
             --card-shadow: rgba(0, 0, 0, 0.05);
-            --glow-player: rgba(0, 0, 0, 0.02);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: background 0.4s, color 0.4s, border-color 0.4s, box-shadow 0.4s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: 0.4s; }
 
         body {
             background: var(--bg-dark);
@@ -40,26 +39,39 @@
         }
 
         /* --- LOGO SEKCE --- */
+        header { 
+            text-align: center; 
+            margin-bottom: 60px; 
+            opacity: 0; 
+            animation: fadeIn 1s forwards; 
+            padding-top: 40px;
+        }
+        @keyframes fadeIn { to { opacity: 1; } }
+
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            margin-bottom: 10px;
         }
 
         .web-logo {
-            max-width: 320px; /* Velikost loga jako v 1. návrhu */
+            max-width: 350px; /* Velikost loga */
             height: auto;
-            filter: drop-shadow(0 0 20px rgba(6, 182, 212, 0.3));
+            filter: drop-shadow(0 0 25px rgba(6, 182, 212, 0.3));
         }
 
         .live-dot {
-            height: 12px; width: 12px; background-color: var(--accent);
+            height: 14px; width: 14px; background-color: var(--accent);
             border-radius: 50%; display: inline-block; 
-            position: absolute; top: 10px; right: -20px;
-            box-shadow: 0 0 10px var(--accent);
+            position: absolute; top: 15px; right: -25px;
+            box-shadow: 0 0 12px var(--accent);
             animation: pulse-dot 1.5s infinite;
         }
         @keyframes pulse-dot { 0% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.7; } }
+
+        .tagline {
+            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 8px; margin-top: 15px;
+            font-weight: 700; color: var(--accent);
+        }
 
         /* --- TLAČÍTKO REŽIMU --- */
         .theme-toggle {
@@ -68,7 +80,6 @@
             width: 50px; height: 50px; border-radius: 15px;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-            font-size: 1.2rem; box-shadow: 0 8px 20px var(--card-shadow);
         }
 
         .bg-animate {
@@ -79,15 +90,7 @@
         }
         @keyframes pulseBg { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
-        .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; width: 100%; z-index: 1; }
-
-        header { text-align: center; margin-bottom: 60px; opacity: 0; animation: fadeIn 1s forwards; }
-        @keyframes fadeIn { to { opacity: 1; } }
-
-        .tagline {
-            font-size: 0.9rem; text-transform: uppercase; letter-spacing: 8px; margin-top: 20px;
-            font-weight: 700; color: var(--accent);
-        }
+        .main-wrapper { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 20px; width: 100%; z-index: 1; }
 
         /* --- PLAYER --- */
         .player-card {
@@ -152,10 +155,9 @@
 
         footer { padding: 40px; text-align: center; width: 100%; border-top: 1px solid var(--border-glass); }
         footer p { font-size: 0.75rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-        footer a { color: var(--secondary); text-decoration: none; }
 
         @media (max-width: 768px) {
-            .web-logo { max-width: 240px; }
+            .web-logo { max-width: 250px; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -171,7 +173,7 @@
     <div class="main-wrapper">
         <header>
             <div class="logo-wrapper">
-                <img src="logo.png" alt="MOVEIT RÁDIO" class="web-logo">
+                <img src="https://raw.githubusercontent.com/webwp1/verze4/main/Moveit%20R%C3%A1dio%20LOGO%202026.png" alt="MOVEIT RÁDIO" class="web-logo">
                 <span class="live-dot"></span>
             </div>
             <p class="tagline">Tvoje vlna energie</p>
@@ -222,7 +224,7 @@
     </div>
 
     <footer>
-        <p>POWERED BY <a href="https://sites.google.com/view/martin-weby/web" target="_blank">MARTIN</a> &copy; 2026</p>
+        <p>POWERED BY <a href="https://sites.google.com/view/martin-weby/web" target="_blank" style="color:var(--secondary); text-decoration:none;">MARTIN</a> &copy; 2026</p>
     </footer>
 
     <audio id="radioAudio" src="https://stream.zeno.fm/jkrusgbmbtcvv" preload="none"></audio>
